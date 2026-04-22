@@ -15,7 +15,7 @@ build:
   entry_points:
     - ase2sprkkr = ase2sprkkr.tools.ase2sprkkr:run
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
   skip: True  # [not linux]
 
 requirements:
@@ -54,6 +54,7 @@ requirements:
     - nbformat
     - unyts
     - pandas <3.0,>=2.1
+    - networkx <3.3  # py>313
 
 test:
   imports:
