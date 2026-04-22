@@ -15,7 +15,7 @@ build:
   entry_points:
     - ase2sprkkr = ase2sprkkr.tools.ase2sprkkr:run
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
   skip: True  # [not linux]
 
 requirements:
