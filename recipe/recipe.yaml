@@ -1,28 +1,32 @@
-{% set name = "ase2sprkkr" %}
-{% set version = "3.4.2" %}
+schema_version: 1
+
+context:
+  name: ase2sprkkr
+  version: "3.4.2"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ase2sprkkr-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/ase2sprkkr-${{ version }}.tar.gz
   sha256: 6d19b4bacb1c2f25489654141c44683694beec171264ca583bba75be199e6ca8
   patches:
     - pyproject.patch
 
 build:
-  entry_points:
-    - ase2sprkkr = ase2sprkkr.tools.ase2sprkkr:run
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
-  skip: True  # [not linux]
+  number: 2
+  skip: not linux
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    entry_points:
+      - ase2sprkkr = ase2sprkkr.tools.ase2sprkkr:run
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('fortran') }}
-    - {{ stdlib('c') }}
+    - ${{ compiler('c') }}
+    - ${{ compiler('fortran') }}
+    - ${{ stdlib('c') }}
     - cmake
     - make
   host:
@@ -56,20 +60,22 @@ requirements:
     - pandas <3.0,>=2.1
     - networkx <3.3  # py>313
 
-test:
-  imports:
-    - ase2sprkkr
-  commands:
-    - pip check
-    - ase2sprkkr --help
-  requires:
-    - pip
+tests:
+  - python:
+      imports:
+        - ase2sprkkr
+      pip_check: true
+  - requirements:
+      run:
+        - pip
+    script:
+      - ase2sprkkr --help
 
 about:
-  home: https://github.com/ase2sprkkr/ase2sprkkr
   summary: Wrapper/calculator for SPRKKR to be used within ASE (Atomic Simulation Environment)
   license: MIT
   license_file: LICENCE
+  homepage: https://github.com/ase2sprkkr/ase2sprkkr
 
 extra:
   recipe-maintainers:
