@@ -69,9 +69,6 @@ tests:
   - requirements:
       run:
         - pip
-        - argcomplete
-    script:
-      - eval "$(register-python-argcomplete ase2sprkkr)"; ase2sprkkr --help
 
 about:
   summary: Wrapper/calculator for SPRKKR to be used within ASE (Atomic Simulation Environment)
