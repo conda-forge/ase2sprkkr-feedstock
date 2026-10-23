@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: ase2sprkkr
-  version: "3.4.2"
+  version: "3.6.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,12 +10,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/ase2sprkkr-${{ version }}.tar.gz
-  sha256: 6d19b4bacb1c2f25489654141c44683694beec171264ca583bba75be199e6ca8
+  sha256: e492a5d96a013910aee576af7a76a7db0afddb9717da423f0b21ecae62072ca5
   patches:
     - pyproject.patch
 
 build:
-  number: 2
+  number: 0
   skip: not linux
   script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
