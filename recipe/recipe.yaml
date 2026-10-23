@@ -71,7 +71,7 @@ tests:
         - pip
         - argcomplete
     script:
-      - register-python-argcomplete ase2sprkkr
+      - echo 'eval "$(register-python-argcomplete ase2sprkkr)"' > ~/.bashrc
       - ase2sprkkr --help
 
 about:
