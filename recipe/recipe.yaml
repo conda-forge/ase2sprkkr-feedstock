@@ -66,9 +66,6 @@ tests:
       imports:
         - ase2sprkkr
       pip_check: true
-  - requirements:
-      run:
-        - pip
 
 about:
   summary: Wrapper/calculator for SPRKKR to be used within ASE (Atomic Simulation Environment)
