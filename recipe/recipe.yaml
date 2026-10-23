@@ -69,7 +69,9 @@ tests:
   - requirements:
       run:
         - pip
+        - argcomplete
     script:
+      - register-python-argcomplete ase2sprkkr
       - ase2sprkkr --help
 
 about:
